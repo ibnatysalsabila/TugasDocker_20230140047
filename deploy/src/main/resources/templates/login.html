@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Student Portal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream-bg: #fdfaf3;
+            --accent-tan: #c8a27c;
+            --accent-hover: #b08b65;
+            --warm-text: #4a453e;
+            --warm-subtitle: #7d7268;
+        }
+        
+        body { 
+            background-color: var(--cream-bg); 
+            height: 100vh; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-family: 'Inter', sans-serif;
+            color: var(--warm-text);
+            margin: 0;
+        }
+
+        .login-box { 
+            width: 100%; 
+            max-width: 420px; 
+            padding: 2.5rem; 
+            background-color: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px -5px rgba(200, 162, 124, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+            border: 1px solid rgba(200, 162, 124, 0.2);
+        }
+
+        .header-title {
+            font-weight: 800;
+            font-size: 1.75rem;
+            letter-spacing: -0.04em;
+            color: var(--warm-text);
+            margin-bottom: 0.5rem;
+        }
+
+        .header-subtitle {
+            color: var(--warm-subtitle);
+            font-size: 0.925rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-label { 
+            font-weight: 600; 
+            font-size: 0.825rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+            color: var(--warm-subtitle);
+        }
+
+        .form-control {
+            padding: 0.75rem 1rem;
+            border-radius: 12px;
+            border: 1px solid #e8e3d9;
+            background-color: #fdfcf9;
+            transition: all 0.2s ease;
+        }
+
+        .form-control:focus {
+            border-color: var(--accent-tan);
+            box-shadow: 0 0 0 4px rgba(200, 162, 124, 0.1);
+            background-color: #ffffff;
+            outline: none;
+        }
+
+        .btn-tan { 
+            background-color: var(--accent-tan); 
+            color: white; 
+            border: none; 
+            padding: 0.875rem; 
+            font-weight: 700; 
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(200, 162, 124, 0.3);
+        }
+
+        .btn-tan:hover { 
+            background-color: var(--accent-hover); 
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(200, 162, 124, 0.4);
+            color: white;
+        }
+
+        .alert-error {
+            background-color: #fff1f2;
+            color: #9f1239;
+            border: 1px solid #ffe4e6;
+            border-radius: 12px;
+            font-size: 0.875rem;
+            padding: 0.75rem 1rem;
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-box">
+        <div class="text-center">
+            <h1 class="header-title">Welcome</h1>
+            <p class="header-subtitle">Login to your student panel</p>
+        </div>
+
+        <form th:action="@{/login}" method="post">
+            <div th:if="${error}" class="alert-error" th:text="${error}"></div>
+            
+            <div class="mb-3">
+                <label class="form-label">Username</label>
+                <input type="text" name="username" class="form-control" placeholder="admin" required autofocus>
+            </div>
+            
+            <div class="mb-4">
+                <label class="form-label">Password</label>
+                <input type="password" name="password" class="form-control" placeholder="••••••••" required>
+            </div>
+            
+            <button type="submit" class="btn btn-tan w-100">Login</button>
+        </form>
+    </div>
+</body>
+</html>
